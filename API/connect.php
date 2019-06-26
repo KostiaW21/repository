@@ -1,18 +1,14 @@
 <?php
 class Database{
-
+  //Подключение к серверу
 	public static function getConnection()
 	{
-		$config = require_once 'config.php';
+		$config = include 'config.php';
 
-		$dsn = 'mysql:host='.$config['host']
-		.';dbname='.$config['db_name']
-		.';charset='.$config['charset'];
+		$dsn = "mysql:host={$config['host']};dbname={$config['db_name']}";
 
-		$db = new PDO($dsn,
-			$config['username'],
-			$config['password']);
-
+		$db = new PDO($dsn,$config['username'],$config['password']);
+		$db->exec("set names utf8");
 		return $db;
 	}	
 }
