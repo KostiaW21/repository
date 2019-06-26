@@ -9,7 +9,7 @@ class ServicesTable{
    		$db = Database::getConnection();
    		$result = $db->query($sql);
 		$json_str = json_encode($result->fetchAll(PDO::FETCH_ASSOC));
-		print_r($json_str);
+		return $json_str;
    }
    //Вставка в таблицу
     public function insert($serviceName)
